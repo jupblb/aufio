@@ -1,0 +1,14 @@
+# Dependencies and generated output
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+npm-debug.log*
+
+# Nix/direnv local state and build links (keep flake.lock tracked)
+.direnv/
+/result
+/result-*
+
+# macOS metadata
+.DS_Store
