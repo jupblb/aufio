@@ -12,6 +12,7 @@
         packages = with pkgs; [
           nodejs_24
           typescript
+          prettier
           git
           curl
           # node-hid normally uses its bundled macOS binary. Keep the native

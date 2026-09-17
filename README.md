@@ -16,8 +16,8 @@ npm run -s aufio -- read
 npm run -s aufio -- save before-tuning
 ```
 
-`flake.nix`/`flake.lock` provide Node 24 (including npm), TypeScript, Git, curl,
-and the Python/pkg-config/Clang/Make native-addon build tools. npm dependencies
+`flake.nix`/`flake.lock` provide Node 24 (including npm), TypeScript, Prettier, Git,
+curl and the Python/pkg-config/Clang/Make native-addon build tools. npm dependencies
 are pinned in `package-lock.json`. The macOS `node-hid` prebuilt binary is bundled
 with the package. `npm ci` may warn about an unapproved native install script;
 the bundled binary works without running that script on the tested Mac.
@@ -138,13 +138,23 @@ commands are implemented.
 ## Development and verification
 
 ```sh
+nix develop --command npm run format:check
 nix develop --command npm run check
 nix develop --command npm test
 ```
 
+Use `npm run format` inside the dev shell to format source and tests.
+
+The CLI parses arguments and prints results; `EqController` owns device sessions,
+backups and write policy. `Ka17` handles ordered commands and readback, while
+`protocol.ts` encodes packets. `preset.ts` validates and converts preset values,
+`dsp.ts` estimates frequency response, and `store.ts` handles files and locking.
+
 Tests never access real USB hardware. They cover golden packets, incomplete and
 unrelated responses, failed writes, readback-before-save, post-save corruption,
 Q compensation, headroom, validation, exclusive operations and durable storage.
+Controller tests also check recovery backups precede changes, dry-run/no-op
+behavior, exact snapshot restoration and cleanup without retry after a failure.
 
 Hardware verification on 2026-09-17: native reads, local backups, a small USER1
 write/save, fresh-process readback, exact restoration and a final comparison all

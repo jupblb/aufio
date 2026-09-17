@@ -13,7 +13,9 @@
   "scripts": {
     "aufio": "node bin/aufio.mjs",
     "check": "tsc --noEmit",
-    "test": "node --test test/*.test.ts"
+    "test": "node --test test/*.test.ts",
+    "format": "prettier --write --single-quote --print-width 100 src test bin",
+    "format:check": "prettier --check --single-quote --print-width 100 src test bin"
   },
   "dependencies": {
     "commander": "15.0.0",
