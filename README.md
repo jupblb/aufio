@@ -3,8 +3,7 @@
 Local, agent-friendly control of a **FiiO KA17's onboard EQ** on Apple Silicon
 macOS. No browser, FiiO account, audio-routing driver, cloud service or MCP server
 is required. Audio continues through the KA17; this program only sends control
-messages. The headphones are **HiFiMan Arya Unveiled** (a passive analog device,
-not a separately controllable USB device).
+messages.
 
 ## Run
 
