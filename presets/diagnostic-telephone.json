@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "kind": "ka17-preset",
+  "name": "diagnostic-telephone",
+  "headphone": "HiFiMan Arya Unveiled",
+  "notes": "Diagnostic only: deliberately remove bass and treble to test whether KA17 EQ affects playback. Not a listening recommendation. Cuts only, with -12 dB preamp. Eight zero-gain bands clear leftover filters because this KA17 retained a count of ten when asked for two. Keep playback volume low and do not turn it up to compensate; restoring custom-2 will be much louder if EQ is active. Hardware readback does not establish that the independent EQ enable state is on. Both custom presets remain unchanged.",
+  "qMode": "device",
+  "preampDb": -12,
+  "bands": [
+    { "type": "LS", "frequencyHz": 400, "gainDb": -12, "q": 0.71 },
+    { "type": "HS", "frequencyHz": 1500, "gainDb": -12, "q": 0.71 },
+    { "type": "PK", "frequencyHz": 120, "gainDb": 0, "q": 1 },
+    { "type": "PK", "frequencyHz": 1000, "gainDb": 0, "q": 1 },
+    { "type": "PK", "frequencyHz": 2000, "gainDb": 0, "q": 1 },
+    { "type": "PK", "frequencyHz": 3000, "gainDb": 0, "q": 1 },
+    { "type": "PK", "frequencyHz": 4250, "gainDb": 0, "q": 1 },
+    { "type": "PK", "frequencyHz": 5300, "gainDb": 0, "q": 1 },
+    { "type": "PK", "frequencyHz": 10000, "gainDb": 0, "q": 1 },
+    { "type": "PK", "frequencyHz": 8000, "gainDb": 0, "q": 1 }
+  ]
+}
