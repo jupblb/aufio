@@ -7,24 +7,25 @@ messages.
 
 ## Run
 
+On Apple Silicon macOS, run directly from the repository:
+
 ```sh
-nix develop
-npm ci
-npm run -s aufio -- inspect
-npm run -s aufio -- read
-npm run -s aufio -- save before-tuning
+nix run . -- --help
+nix run . -- inspect
+nix run . -- read
+nix run . -- save before-tuning
 ```
 
-`flake.nix`/`flake.lock` provide Node 24 (including npm), TypeScript, Prettier, Git,
-curl and the Python/pkg-config/Clang/Make native-addon build tools. npm dependencies
-are pinned in `package-lock.json`. The macOS `node-hid` prebuilt binary is bundled
-with the package. `npm ci` may warn about an unapproved native install script;
-the bundled binary works without running that script on the tested Mac.
+Nix packages Node 24, the locked npm dependencies and the bundled macOS `node-hid`
+binary. No `npm ci` or development shell is needed. `nix run .#aufio -- …` is an
+alias; `nix build` produces `result/bin/aufio`. Relative preset paths still resolve
+from your current directory, and saved presets/backups use your normal user data
+directory.
 
-From an agent's shell tool, use this in the repository working directory:
+For example, validate a preset without changing the DAC:
 
 ```sh
-nix develop --command node bin/aufio.mjs inspect
+nix run . -- validate presets/custom.json
 ```
 
 All command results are JSON on stdout, except help/version. Errors and recovery
@@ -32,6 +33,10 @@ paths are JSON on stderr. Failures return exit status 1. `verify` also returns 1
 for a mismatch; `diff` reports differences without failing. `validate` returns 1
 if the model estimates clipping. Do not interpret exit status 0 as proof of
 nonvolatile device storage.
+
+The flake also provides `applemusic-mcp` (the upstream login utility and CLI) and
+`apple-music-history` (the restricted read-only MCP server). See the optional
+[Apple Music setup](docs/apple-music.md) for Nix commands and Amp registration.
 
 ## Tune and save
 
@@ -136,10 +141,27 @@ commands are implemented.
 
 ## Development and verification
 
+The development shell provides Node 24 (including npm), TypeScript, Prettier, Git,
+curl and Python/pkg-config/Clang/Make for native-addon development. Install the
+locked dependencies once:
+
+```sh
+nix develop --command npm ci
+```
+
+Run the packaged build, type checks, tests and CLI/native-addon smoke checks:
+
+```sh
+nix flake check
+```
+
+For checks and commands against the working source:
+
 ```sh
 nix develop --command npm run format:check
 nix develop --command npm run check
 nix develop --command npm test
+nix develop --command node bin/aufio.mjs inspect
 ```
 
 Use `npm run format` inside the dev shell to format source and tests.
