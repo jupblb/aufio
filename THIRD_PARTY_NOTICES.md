@@ -1,15 +1,10 @@
 # Third-party notices
 
-The KA17 packet layout, preset mapping, gain encoding and gain-dependent peaking
-Q convention are adapted from / informed by
-[devicePEQ](https://github.com/jeromeof/devicePEQ/tree/0617f382e76629792a5933e6933e4b396a756a93),
-particularly `devicePEQ/fiioUsbHidHandler.js` (header: Copyright 2024 Pragmatic
-Audio), `usbDeviceConfig.js`, and the included protocol captures. No vendor
-application bundle is distributed with aufio.
+The KA17 packet layout, preset mapping, gain encoding and gain-dependent peaking Q convention are adapted from / informed by [devicePEQ], particularly `devicePEQ/fiioUsbHidHandler.js` (header: Copyright 2024 Pragmatic Audio), `usbDeviceConfig.js`, and the included protocol captures. No vendor application bundle is distributed with aufio.
 
-The reference project's `LICENSE.txt` states:
+The reference project’s `LICENSE.txt` states:
 
-```text
+``` text
 Copyright 2024 Jerome O'Flaherty (jerome.oflaherty@icloud.com)
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -24,5 +19,6 @@ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ```
 
-Installed npm dependencies retain their own license notices, including
-`node-hid` and its bundled HIDAPI implementation. See their package contents.
+Installed npm dependencies retain their own license notices, including `node-hid` and its bundled HIDAPI implementation. See their package contents.
+
+  [devicePEQ]: https://github.com/jeromeof/devicePEQ/tree/0617f382e76629792a5933e6933e4b396a756a93
